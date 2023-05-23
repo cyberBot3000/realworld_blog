@@ -77,6 +77,10 @@
 		font-size: 1.1em;
 		color: $color-bg-element;
 
+		&_disabled {
+			background-color: lighten($color-accent, 12.5%);
+		}
+
 	}
 
 	&__additional-info {

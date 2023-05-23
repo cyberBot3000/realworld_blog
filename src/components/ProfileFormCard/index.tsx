@@ -14,21 +14,28 @@ import {
 	NewPassword,
 	AvatarImage,
 } from './components';
+import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
+import { FormValues } from './types';
 
 interface ProfileFormCardProps {
 	header?: ReactNode;
 	main?: ReactNode;
 	footer?: ReactNode;
 	className?: string;
+	onSubmit?: SubmitHandler<FormValues>;
 }
 
-export const ProfileFormCard = ({ header, main, footer, className }: ProfileFormCardProps) => {
+export const ProfileFormCard = ({ header, main, footer, className, onSubmit = () => {} }: ProfileFormCardProps) => {
+	const methods = useForm<FormValues>({ mode: 'onChange' });
+
 	return (
-		<form className={`profile-form-card ${className}`}>
-			<header className="profile-form-card__header">{header}</header>
-			<main className="profile-form-card__main">{main}</main>
-			<footer className="profile-form-card__footer">{footer}</footer>
-		</form>
+		<FormProvider {...methods}>
+			<form className={`profile-form-card ${className}`} onSubmit={methods.handleSubmit(onSubmit)}>
+				<header className="profile-form-card__header">{header}</header>
+				<main className="profile-form-card__main">{main}</main>
+				<footer className="profile-form-card__footer">{footer}</footer>
+			</form>
+		</FormProvider>
 	);
 };
 

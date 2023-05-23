@@ -11,6 +11,9 @@ export const SignInPage = () => {
 			<Container>
 				<ProfileFormCard
 					className="sign-in-page__form"
+					onSubmit={data => {
+						console.log(data);
+					}}
 					header={<ProfileFormCard.Title>Sign in</ProfileFormCard.Title>}
 					main={
 						<Flex className="sign-in-page__main" direction="c">
@@ -20,7 +23,7 @@ export const SignInPage = () => {
 					}
 					footer={
 						<>
-							<ProfileFormCard.SubmitBtn />
+							<ProfileFormCard.SubmitBtn>Login</ProfileFormCard.SubmitBtn>
 							<ProfileFormCard.Additional>
 								Don’t have an account? <Link to="/sign-up">Sign Up.</Link>
 							</ProfileFormCard.Additional>

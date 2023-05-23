@@ -9,7 +9,10 @@ const EditProfilePage = () => {
 			<Container>
 				<ProfileFormCard
 					className="edit-profile-page__form"
-					header={<ProfileFormCard.Title>Sign in</ProfileFormCard.Title>}
+					onSubmit={data => {
+						console.log(data);
+					}}
+					header={<ProfileFormCard.Title>Edit profile</ProfileFormCard.Title>}
 					main={
 						<Flex className="edit-profile-page__form-main" direction="c">
 							<ProfileFormCard.UserName />

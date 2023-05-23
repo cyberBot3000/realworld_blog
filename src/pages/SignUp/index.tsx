@@ -12,6 +12,9 @@ export const SignUpPage = () => {
 			<Container>
 				<ProfileFormCard
 					className="register-page__form"
+					onSubmit={data => {
+						console.log(data);
+					}}
 					header={<ProfileFormCard.Title>Create new account</ProfileFormCard.Title>}
 					main={
 						<Flex direction="c" className="register-page__form-main">
