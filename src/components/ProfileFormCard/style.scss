@@ -1,0 +1,114 @@
+@import '/src/assets/styles/variables';
+
+.profile-form-card {
+	background-color: $color-bg-element;
+	border: 1px solid #D9D9D9;
+	box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198), 0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035), 0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725), 0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+	border-radius: 6px;
+	padding: 2.5em 2em;
+
+	&__checkbox-label {
+		cursor: pointer;
+	}
+
+	&__checkbox {
+		font-size: inherit;
+		width: 1.5em;
+		height: 1.5em;
+	}
+
+	&__labeled-text-field {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+
+	&__text-input-label {
+		color: $color-text-dark;
+		font-weight: 500;
+		display: block;
+		margin-bottom: .2em;
+	}
+
+	&__text-input {
+		font-size: 1.1em;
+		padding: .5em .8em;
+		outline: none;
+		border: 1px solid #D9D9D9;
+		border-radius: 4px;
+		background-color: $color-bg-element;
+		width: 100%;
+
+		&_error {
+			border-color: $color-error;
+		}
+
+		&::placeholder {
+			color: $color-text-light;
+
+		}
+	}
+
+	&__error-message {
+		color: $color-error;
+	}
+
+	&__title {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 2em;
+		line-height: 140%;
+
+		text-align: center;
+	}
+
+	&__submit-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		outline: none;
+		border: none;
+		background-color: $color-accent;
+		cursor: pointer;
+		padding: .8em;
+		border-radius: 4px;
+		width: 100%;
+		margin: .8em 0em;
+		font-size: 1.1em;
+		color: $color-bg-element;
+
+	}
+
+	&__additional-info {
+		text-align: center;
+		color: #8C8C8C;
+
+		a {
+			color: $color-accent;
+		}
+	}
+
+	&__labeled-checkbox {
+
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 10px;
+
+		&_agree-with-terms {
+			padding-top: 1.2em;
+			border-top: 1px solid #E8E8E8;
+			color: $color-text-default;
+		}
+	}
+
+
+
+	&__header {
+		margin-bottom: 1em;
+	}
+
+	&__main {}
+
+	&__footer {}
+}

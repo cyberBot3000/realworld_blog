@@ -13,6 +13,14 @@ export interface FetchArticlesResponseType {
 	articlesCount: number;
 }
 
+export interface FetchArticleByIdResponseType {
+	article: IArticle;
+}
+
+export interface FetchArticleByIdArgs {
+	slug: string;
+}
+
 export const realWorldApi = createApi({
 	baseQuery: fetchBaseQuery({ baseUrl: 'https://blog.kata.academy/api' }),
 	endpoints: build => ({
@@ -22,8 +30,11 @@ export const realWorldApi = createApi({
 				params,
 			}),
 		}),
+		fetchArticleById: build.query<FetchArticleByIdResponseType, FetchArticleByIdArgs>({
+			query: ({ slug }) => `/articles/${slug}`,
+		}),
 	}),
 });
 
-export const { useFetchArticlesQuery } = realWorldApi;
+export const { useFetchArticlesQuery, useFetchArticleByIdQuery } = realWorldApi;
 export const realWorldApiReducer = realWorldApi.reducer;

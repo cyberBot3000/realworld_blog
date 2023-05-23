@@ -40,7 +40,7 @@ export const ArticlesList = () => {
 									<Article.Info
 										header={
 											<Flex alignItems="c">
-												<Link to="/">
+												<Link to={`/articles/${article.slug}`}>
 													<Article.Title />
 												</Link>
 												<Article.Favorites />

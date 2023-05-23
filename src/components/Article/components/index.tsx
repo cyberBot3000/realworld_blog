@@ -4,3 +4,4 @@ export * from './Favorites';
 export * from './Info';
 export * from './TagList';
 export * from './Title';
+export * from './Body';
