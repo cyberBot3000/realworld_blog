@@ -2,7 +2,7 @@ import Article from 'components/Article';
 import { Flex } from 'components/ui/Flex';
 import { Loader } from 'components/ui/Loader';
 import Pagination from 'components/ui/Pagination';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'utils/hooks';
 import React from 'react';
 import { useFetchArticlesQuery } from 'service';
 import { changePage } from 'store';
