@@ -83,12 +83,32 @@
 
 	}
 
+	&__form-error-field {
+		border: 1px solid $color-error;
+		border-radius: 4px;
+		padding: .8em 1em;
+		margin-bottom: 1.5em;
+	}
+
+	&__form-error-message {
+		font-size: 1.1em;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+
 	&__additional-info {
 		text-align: center;
 		color: #8C8C8C;
 
 		a {
 			color: $color-accent;
+
+			&:visited {
+				color: $color-accent;
+			}
 		}
 	}
 

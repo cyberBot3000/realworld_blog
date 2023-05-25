@@ -8,15 +8,35 @@
 		gap: 2em;
 	}
 
+	&__user {
+		gap: 1em;
+	}
+
 	&__btn {
 		color: $color-text-default;
+		background-color: $color-bg-element;
+		outline: none;
+
 		cursor: pointer;
 
-		&_success {
+		&_sm {
+			padding: .4em .8em;
+
+		}
+
+		&_b {
 			padding: .5em 1.5em;
-			color: $color-success;
-			border: 1px solid $color-success;
+
+		}
+
+		&_outlined {
+			border: 1px solid $color-text-dark;
 			border-radius: 5px;
+		}
+
+		&_success {
+			color: $color-success;
+			border-color: $color-success;
 			transition: color $base-animation, background-color $base-animation;
 
 			&:hover {

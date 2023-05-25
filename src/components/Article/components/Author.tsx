@@ -1,6 +1,7 @@
 import React from 'react';
 import { useArticleContext } from '../hooks';
 import { Flex } from 'components/ui/Flex';
+import CircleImage from 'components/ui/CircleImage';
 
 export const Author = () => {
 	const { author, createdAt } = useArticleContext();
@@ -12,9 +13,7 @@ export const Author = () => {
 					{new Date(createdAt).toLocaleDateString('en', { dateStyle: 'medium' })}
 				</div>
 			</div>
-			<div className="article__author-image">
-				<img src={author.image} alt="" />
-			</div>
+			<CircleImage src={author.image} />
 		</Flex>
 	);
 };

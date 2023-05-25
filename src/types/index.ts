@@ -1,7 +1,9 @@
 export interface IUser {
-	name: string;
-	password: string;
 	email: string;
+	token: string;
+	username: string;
+	bio: string;
+	image: string;
 }
 
 export interface IArticle {
@@ -20,4 +22,12 @@ export interface IArticle {
 		image: string;
 		following: true;
 	};
+}
+
+export interface FormStatusCodeErrorData {
+	errors:
+		| {
+				[where: string]: string;
+		  }
+		| undefined;
 }

@@ -8,3 +8,4 @@ export * from './Title';
 export * from './UserName';
 export * from './Additional';
 export * from './NewPassword';
+export * from './ErrorField';

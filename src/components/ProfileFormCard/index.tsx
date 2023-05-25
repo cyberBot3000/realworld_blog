@@ -13,6 +13,7 @@ import {
 	Additional,
 	NewPassword,
 	AvatarImage,
+	ErrorField,
 } from './components';
 import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
 import { FormValues } from './types';
@@ -49,3 +50,4 @@ ProfileFormCard.SubmitBtn = SubmitBtn;
 ProfileFormCard.Additional = Additional;
 ProfileFormCard.NewPassword = NewPassword;
 ProfileFormCard.AvatarImage = AvatarImage;
+ProfileFormCard.ErrorField = ErrorField;
