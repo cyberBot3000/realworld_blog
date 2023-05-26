@@ -3,7 +3,7 @@ import { FormValues } from 'components/ProfileFormCard/types';
 import { Container } from 'components/ui/Container';
 import { Flex } from 'components/ui/Flex';
 import { useEffect } from 'react';
-import { SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSendSignInMutation } from 'service';
 import { SignInUserArgs } from 'service/types';
@@ -25,12 +25,16 @@ export const SignInPage = () => {
 	const onSubmit: SubmitHandler<FormValues> = formData => {
 		signIn(formData as SignInUserArgs);
 	};
+
+	const methods = useForm<FormValues>({ mode: 'onChange' });
+
 	return (
 		<div className="sing-in-page">
 			<Container>
 				<ProfileFormCard
 					className={`sign-in-page__form ${isLoading && 'sign-in-page__form_loading'}`}
 					onSubmit={onSubmit}
+					formMethods={methods}
 					header={
 						<>
 							{error && <ProfileFormCard.ErrorField error={error} />}

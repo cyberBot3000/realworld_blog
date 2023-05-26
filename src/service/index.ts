@@ -5,6 +5,8 @@ import {
 	FetchArticlesArg,
 	FetchArticlesResponseType,
 	SignInUserArgs,
+	SignUpUserArgs,
+	UpdateUserArgs,
 	UserResponse,
 } from './types';
 import { getCookie, setCookie } from 'utils/helpers';
@@ -55,9 +57,29 @@ export const realWorldApi = createApi({
 			},
 			invalidatesTags: ['User'],
 		}),
+		sendSignUp: build.mutation<UserResponse, SignUpUserArgs>({
+			query: args => ({
+				url: '/users',
+				body: { user: args },
+				method: 'POST',
+			}),
+		}),
+		sendUpdateUser: build.mutation<UserResponse, UpdateUserArgs>({
+			query: args => ({
+				url: '/user',
+				body: { user: args },
+				method: 'PUT',
+			}),
+		}),
 	}),
 });
 
-export const { useFetchArticlesQuery, useFetchArticleByIdQuery, useFetchCurrentUserQuery, useSendSignInMutation } =
-	realWorldApi;
+export const {
+	useFetchArticlesQuery,
+	useFetchArticleByIdQuery,
+	useFetchCurrentUserQuery,
+	useSendSignInMutation,
+	useSendSignUpMutation,
+	useSendUpdateUserMutation,
+} = realWorldApi;
 export const realWorldApiReducer = realWorldApi.reducer;

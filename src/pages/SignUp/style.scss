@@ -1,8 +1,29 @@
+@import '/src/assets/styles/variables';
+
 .register-page {
 	&__form {
 		font-size: 16px;
 		width: 30em;
 		margin: 2em auto;
+		overflow: hidden;
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background-color: rgba($color: $color-bg-element, $alpha: .5);
+			z-index: 100;
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		&_loading {
+			&::before {
+				opacity: 1;
+			}
+		}
 	}
 
 	&__form-main {
