@@ -1,3 +1,5 @@
+@import '/src/assets/styles/variables';
+
 .edit-profile-page {
 	&__form {
 		font-size: 16px;
@@ -7,6 +9,18 @@
 
 	&__form-main {
 		gap: 1em;
+	}
+
+	&__success-field {
+		border: 1px solid $color-success;
+		border-radius: 4px;
+		padding: .8em 1em;
+		margin-bottom: 1.5em;
+		font-size: 1.1em;
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
 	}
 
 }

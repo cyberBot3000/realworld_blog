@@ -41,7 +41,8 @@ export const realWorldApi = createApi({
 			query: () => ({
 				url: '/user',
 			}),
-			providesTags: result => (result ? [{ type: 'User' as const, id: result.user.token }, 'User'] : ['User']),
+			providesTags: result =>
+				result ? [{ type: 'User' as const, id: JSON.stringify(result.user) }, 'User'] : ['User'],
 		}),
 		sendSignIn: build.mutation<UserResponse, SignInUserArgs>({
 			query: args => ({
@@ -70,6 +71,7 @@ export const realWorldApi = createApi({
 				body: { user: args },
 				method: 'PUT',
 			}),
+			invalidatesTags: ['User'],
 		}),
 	}),
 });

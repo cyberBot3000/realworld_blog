@@ -17,13 +17,8 @@ const EditProfilePage = () => {
 		error: currentUserError,
 		isLoading: currentUserIsLoading,
 	} = useFetchCurrentUserQuery(undefined);
-	const methods = useForm<FormValues>({
+	const formMethods = useForm<FormValues>({
 		mode: 'onChange',
-		defaultValues: {
-			email: currentUserData?.user.email,
-			username: currentUserData?.user.username,
-			image: currentUserData?.user.image,
-		},
 	});
 	const [sendUpdateUser, { isLoading: updateUserIsLoading, error: updateUserError, data: updateUserData }] =
 		useSendUpdateUserMutation();
@@ -34,11 +29,16 @@ const EditProfilePage = () => {
 		}
 		if (currentUserData === undefined) {
 			navigate('/sign-in');
+			return;
 		}
+		formMethods.setValue('email', currentUserData.user.email);
+		formMethods.setValue('username', currentUserData.user.username);
+		formMethods.setValue('image', currentUserData.user.image);
+		console.log(currentUserData);
 	}, [currentUserIsLoading, currentUserData]);
 	const submitHandler: SubmitHandler<FormValues> = formData => {
 		sendUpdateUser({ ...(formData as UpdateUserArgs), password: formData.newPassword });
-		methods.setValue('newPassword', '');
+		formMethods.setValue('newPassword', '');
 	};
 
 	return (
@@ -52,7 +52,7 @@ const EditProfilePage = () => {
 							updateUserIsLoading && 'edit-profile-page__form_loading'
 						}`}
 						onSubmit={submitHandler}
-						formMethods={methods}
+						formMethods={formMethods}
 						header={
 							<>
 								{updateUserData && <div className="edit-profile-page__success-field">saved</div>}
