@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { FormValues } from '../types';
 import { urlValidation } from '../utils';
@@ -14,17 +13,12 @@ export const AvatarImage = () => {
 			<input
 				type="text"
 				placeholder="Avatar image"
-				className={`profile-form-card__text-input ${
-					errors.avatarUrl ? 'profile-form-card__text-input_error' : ''
-				}`}
-				{...register('avatarUrl', {
+				className={`profile-form-card__text-input ${errors.image ? 'profile-form-card__text-input_error' : ''}`}
+				{...register('image', {
 					validate: urlValidation,
-					onBlur: () => {
-						console.log(errors);
-					},
 				})}
 			/>
-			{errors.avatarUrl && <div className="profile-form-card__error-message">{errors.avatarUrl.message}</div>}
+			{errors.image && <div className="profile-form-card__error-message">{errors.image.message}</div>}
 		</div>
 	);
 };

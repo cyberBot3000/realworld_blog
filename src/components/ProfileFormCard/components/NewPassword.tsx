@@ -19,7 +19,6 @@ export const NewPassword = () => {
 					errors.newPassword ? 'profile-form-card__text-input_error' : ''
 				}`}
 				{...register('newPassword', {
-					required: 'this field is required',
 					minLength: passwordMinLengthValidator,
 					maxLength: passwordMaxLengthValidator,
 				})}

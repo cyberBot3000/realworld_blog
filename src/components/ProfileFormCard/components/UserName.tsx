@@ -1,5 +1,5 @@
 import React from 'react';
-import { usernameMaxLengthValidator, usernameMinLengthValidator } from '../utils';
+import { userNameValidation, usernameMaxLengthValidator, usernameMinLengthValidator } from '../utils';
 import { useFormContext } from 'react-hook-form';
 import { FormValues } from '../types';
 
@@ -21,6 +21,7 @@ export const UserName = () => {
 					required: 'this field is required',
 					minLength: usernameMinLengthValidator,
 					maxLength: usernameMaxLengthValidator,
+					validate: userNameValidation,
 				})}
 			/>
 			{errors.username && <div className="profile-form-card__error-message">{errors.username.message}</div>}

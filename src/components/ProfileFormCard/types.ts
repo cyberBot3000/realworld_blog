@@ -3,7 +3,7 @@ export interface FormValues {
 	email: string;
 	password: string;
 	repeatPassword: string;
-	avatarUrl: string;
+	image: string;
 	newPassword: string;
 	username: string;
 }

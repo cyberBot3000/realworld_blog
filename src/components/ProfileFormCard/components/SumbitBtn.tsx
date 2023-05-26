@@ -8,14 +8,14 @@ export interface SubmitBtnProps {
 
 export const SubmitBtn = ({ children, disabled }: SubmitBtnProps) => {
 	const {
-		formState: { isDirty, isValid },
+		formState: { isValid },
 	} = useFormContext();
 	return (
 		<button
 			type="submit"
-			disabled={!isValid || !isDirty || disabled}
+			disabled={!isValid || disabled}
 			className={`profile-form-card__submit-btn ${
-				!isValid || !isDirty || disabled ? 'profile-form-card__submit-btn_disabled' : ''
+				!isValid || disabled ? 'profile-form-card__submit-btn_disabled' : ''
 			}`}
 		>
 			{children}

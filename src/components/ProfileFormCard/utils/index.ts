@@ -19,8 +19,14 @@ export const usernameMaxLengthValidator = {
 };
 
 export const urlValidation: Validate<string, FormValues> = value => {
-	const exp = new RegExp(
+	const httpUrlExp = new RegExp(
 		'^(?:(?:http(?:s)?|ftp)://)(?:\\S+(?::(?:\\S)*)?@)?(?:(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)(?:\\.(?:[a-z0-9\u00a1-\uffff](?:-)*)*(?:[a-z0-9\u00a1-\uffff])+)*(?:\\.(?:[a-z0-9\u00a1-\uffff]){2,})(?::(?:\\d){2,5})?(?:/(?:\\S)*)?$'
 	);
-	return exp.test(value) || value === '' || 'value must be a valid url adress';
+	const base64UrlExp = new RegExp('(data:image/[^;]+;base64[^"]+)');
+	return httpUrlExp.test(value) || base64UrlExp.test(value) || value === '' || 'value must be a valid url adress';
+};
+
+export const userNameValidation: Validate<string, FormValues> = value => {
+	const exp = new RegExp('^[a-zA-Z0-9]+$');
+	return exp.test(value) || value === '' || 'username must contains only latin letters and numbers';
 };

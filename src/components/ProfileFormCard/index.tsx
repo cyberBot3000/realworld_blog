@@ -15,7 +15,7 @@ import {
 	AvatarImage,
 	ErrorField,
 } from './components';
-import { useForm, FormProvider, type SubmitHandler } from 'react-hook-form';
+import { useForm, FormProvider, type SubmitHandler, UseFormReturn } from 'react-hook-form';
 import { FormValues } from './types';
 
 interface ProfileFormCardProps {
@@ -24,14 +24,21 @@ interface ProfileFormCardProps {
 	footer?: ReactNode;
 	className?: string;
 	onSubmit?: SubmitHandler<FormValues>;
+	defaultValues?: Partial<FormValues>;
+	formMethods: UseFormReturn<FormValues, unknown>;
 }
 
-export const ProfileFormCard = ({ header, main, footer, className, onSubmit = () => {} }: ProfileFormCardProps) => {
-	const methods = useForm<FormValues>({ mode: 'onChange' });
-
+export const ProfileFormCard = ({
+	header,
+	main,
+	footer,
+	className,
+	onSubmit = () => {},
+	formMethods,
+}: ProfileFormCardProps) => {
 	return (
-		<FormProvider {...methods}>
-			<form className={`profile-form-card ${className}`} onSubmit={methods.handleSubmit(onSubmit)}>
+		<FormProvider {...formMethods}>
+			<form className={`profile-form-card ${className}`} onSubmit={formMethods.handleSubmit(onSubmit)}>
 				<header className="profile-form-card__header">{header}</header>
 				<main className="profile-form-card__main">{main}</main>
 				<footer className="profile-form-card__footer">{footer}</footer>
