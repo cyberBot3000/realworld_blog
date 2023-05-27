@@ -21,8 +21,43 @@
 	}
 
 	&__likes {
-		gap: 8px;
 		margin-left: 1em;
+		cursor: pointer;
+		background-color: transparent;
+		outline: none;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		font-size: 1.1em;
+
+		&_liked {
+			color: #FF0707;
+		}
+
+		&_disabled {
+			cursor: default;
+			color: $color-text-light;
+
+			.article__likes-count {
+				color: $color-text-light;
+
+			}
+		}
+	}
+
+	&__likes-layout {
+		gap: 4px;
+
+	}
+
+	&__likes-icon {
+		font-size: 1.1em;
+
+	}
+
+	&__likes-count {
+		color: $color-text-dark;
+		font-size: .8em;
 	}
 
 	&__tag-list {
@@ -83,4 +118,6 @@
 	}
 
 	&__markdown {}
+
+
 }
