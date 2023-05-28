@@ -10,11 +10,11 @@ export const useArticlesListInternal = () => {
 		isError,
 	} = useFetchArticlesQuery(
 		{
-			author: '',
-			favorited: '',
-			tag: '',
+			author: undefined,
+			favorited: undefined,
+			tag: undefined,
 			limit: articlesLimit,
-			offset: articlesLimit * (currPage ? currPage : 1),
+			offset: articlesLimit * (currPage ? currPage - 1 : 0),
 		},
 		{
 			skip: currPage === undefined,

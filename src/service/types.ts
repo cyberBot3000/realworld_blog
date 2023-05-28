@@ -12,7 +12,7 @@ export interface FetchArticlesResponseType {
 	articlesCount: number;
 }
 
-export interface FetchArticleByIdResponseType {
+export interface ArticleResponseType {
 	article: IArticle;
 }
 
@@ -48,3 +48,23 @@ export type UpdateUserArgs =
 	| UserArgsWithEmail
 	| UserArgsWithImage
 	| UserArgsWithBio;
+
+export interface ArticleWithDescription {
+	description: string;
+}
+export interface ArticleWithTitle {
+	title: string;
+}
+export interface ArticleWithBody {
+	body: string;
+}
+export interface ArticleWithTagList {
+	tagList: string[];
+}
+
+export type NewArticleArgs = {
+	article: ArticleWithTitle & ArticleWithDescription & ArticleWithBody & ArticleWithTagList;
+};
+export type UpdateArticleArgs = {
+	article: ArticleWithTitle | ArticleWithDescription | ArticleWithBody;
+};

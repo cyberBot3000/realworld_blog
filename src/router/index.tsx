@@ -5,6 +5,8 @@ import { SignUpPage } from 'pages/SignUp';
 import { SingleArticle } from 'pages/SingleArticle';
 import { AppLayout } from 'pages/layout';
 import { createBrowserRouter } from 'react-router-dom';
+import NewArticlePage from 'pages/NewArticle';
+import EditArticlePage from 'pages/EditArticle';
 
 export const router = createBrowserRouter([
 	{
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
 			{
 				path: '/articles/:slug',
 				element: <SingleArticle />,
+			},
+			{
+				path: '/articles/:slug/edit',
+				element: <EditArticlePage />,
+			},
+			{
+				path: '/new-article',
+				element: <NewArticlePage />,
 			},
 		],
 	},

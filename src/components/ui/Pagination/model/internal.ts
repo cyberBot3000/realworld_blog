@@ -37,7 +37,7 @@ export const usePagination = ({
 }: UsePaginationProps): PaginationItem[] => {
 	const allNumberValues = useMemo<PaginationItem[]>(() => {
 		const totalPageCount = Math.ceil(totalCount / pageSize);
-		return range(1, totalPageCount - 1).map(elem => ({ value: elem, key: _.uniqueId('paginationElem') }));
+		return range(1, totalPageCount).map(elem => ({ value: elem, key: _.uniqueId('paginationElem') }));
 	}, [totalCount, pageSize]);
 	const paginationRange = useMemo<PaginationItem[]>(() => {
 		const totalPageCount = allNumberValues.length;

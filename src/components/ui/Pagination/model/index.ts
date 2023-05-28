@@ -10,7 +10,6 @@ export const usePagination = (onPageChange: (p: number) => void = () => {}) => {
 		if (currPage === searchPageNum) {
 			return;
 		}
-		console.log(searchPageNum, currPage);
 		if (searchPageNum >= 1) {
 			setCurrPage(searchPageNum);
 			return;

@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import {
 	FetchArticleByIdArgs,
-	FetchArticleByIdResponseType,
+	ArticleResponseType,
 	FetchArticlesArg,
 	FetchArticlesResponseType,
 	SignInUserArgs,
 	SignUpUserArgs,
 	UpdateUserArgs,
 	UserResponse,
+	NewArticleArgs,
 } from './types';
 import { getCookie, setCookie } from 'utils/helpers';
 import { AUTHORIZATION } from 'utils/const';
@@ -32,10 +33,18 @@ export const realWorldApi = createApi({
 					? [...result.articles.map(({ slug }) => ({ type: 'Article' as const, id: slug })), 'Article']
 					: ['Article'],
 		}),
-		fetchArticleById: build.query<FetchArticleByIdResponseType, FetchArticleByIdArgs>({
+		fetchArticleById: build.query<ArticleResponseType, FetchArticleByIdArgs>({
 			query: ({ slug }) => `/articles/${slug}`,
 			providesTags: result =>
 				result ? [{ type: 'Article' as const, id: result.article.slug }, 'Article'] : ['Article'],
+		}),
+		sendNewArticle: build.mutation<ArticleResponseType, NewArticleArgs>({
+			query: args => ({
+				url: '/articles',
+				method: 'POST',
+				body: args,
+			}),
+			invalidatesTags: ['Article'],
 		}),
 
 		fetchCurrentUser: build.query<UserResponse, undefined>({
@@ -101,5 +110,6 @@ export const {
 	useSendUpdateUserMutation,
 	useSendFavoriteArticleMutation,
 	useSendUnfavoriteArticleMutation,
+	useSendNewArticleMutation,
 } = realWorldApi;
 export const realWorldApiReducer = realWorldApi.reducer;

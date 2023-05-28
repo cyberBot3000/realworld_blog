@@ -20,7 +20,7 @@ export const SignedIn = ({ userData }: SignedInProps) => {
 	const navigate = useNavigate();
 	return (
 		<Flex alignItems="c" justifyContent="fe" className="header__actions">
-			<Link to="/">
+			<Link to="/new-article">
 				<div className="header__btn header__btn_sm header__btn_outlined header__btn_success">
 					Create Article
 				</div>
