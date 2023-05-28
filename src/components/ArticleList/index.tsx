@@ -2,29 +2,12 @@ import Article from 'components/Article';
 import { Flex } from 'components/ui/Flex';
 import { Loader } from 'components/ui/Loader';
 import Pagination from 'components/ui/Pagination';
-import { useAppDispatch, useAppSelector } from 'utils/hooks';
-import React from 'react';
-import { useFetchArticlesQuery } from 'service';
-import { changePage } from 'store';
-import './style.scss';
 import { Link } from 'react-router-dom';
-
-const articlesLimit = 5;
+import { articlesLimit, useArticlesListInternal } from './model';
+import './style.scss';
 
 export const ArticlesList = () => {
-	const { currPage } = useAppSelector(state => state.articlesPaginationChanger);
-	const dispatch = useAppDispatch();
-	const {
-		data: fechedArticles,
-		isLoading,
-		isError,
-	} = useFetchArticlesQuery({
-		author: '',
-		favorited: '',
-		tag: '',
-		limit: articlesLimit,
-		offset: articlesLimit * currPage,
-	});
+	const { isError, isLoading, fechedArticles, currPage, pageChangeHandler } = useArticlesListInternal();
 	return (
 		<Flex className="articles-list" direction="c">
 			{isLoading && <Loader />}
@@ -58,7 +41,7 @@ export const ArticlesList = () => {
 						totalCount={fechedArticles?.articlesCount ?? 0}
 						pageSize={articlesLimit}
 						currentPage={currPage}
-						onPageChange={p => dispatch(changePage(p))}
+						onPageChange={pageChangeHandler}
 						className="articles-list__pagination"
 					/>
 				</>

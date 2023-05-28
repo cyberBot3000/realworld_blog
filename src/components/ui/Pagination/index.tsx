@@ -1,7 +1,7 @@
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
-import { DOTS_VAL, usePagination } from './model';
+import { DOTS_VAL, usePagination } from './model/internal';
 import './style.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export interface PaginationProps {
 	onPageChange?: (currPage: number) => void;
@@ -20,11 +20,16 @@ export const Pagination = ({
 	pageSize,
 	className,
 }: PaginationProps) => {
-	const [internalCurrentPage, setInternalCurrentPage] = useState<number>(currentPage ?? 1);
+	const [internalCurrentPage, setInternalCurrentPage] = useState<number>(currentPage ? currentPage : 1);
+	const mounted = useRef(false);
 	useEffect(() => {
 		if (currentPage !== undefined) setInternalCurrentPage(currentPage);
 	}, [currentPage]);
 	useEffect(() => {
+		if (!mounted.current) {
+			mounted.current = true;
+			return;
+		}
 		onPageChange?.(internalCurrentPage);
 	}, [internalCurrentPage]);
 	const paginationRange = usePagination({
@@ -91,3 +96,5 @@ export const Pagination = ({
 };
 
 export default Pagination;
+
+export * from './model';
