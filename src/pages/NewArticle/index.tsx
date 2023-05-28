@@ -26,7 +26,7 @@ export const NewArticlePage = () => {
 	useEffect(() => {
 		if (isLoading) return;
 		if (sendArticleResponse !== undefined) {
-			console.log(sendArticleResponse);
+			navigate('/');
 		}
 	}, [isLoading, sendArticleResponse]);
 

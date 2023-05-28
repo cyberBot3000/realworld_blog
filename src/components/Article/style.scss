@@ -117,7 +117,15 @@
 		line-height: 183%;
 	}
 
-	&__markdown {}
+	&__markdown {
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+
+		* {
+			list-style-position: inside;
+		}
+	}
 
 
 }
