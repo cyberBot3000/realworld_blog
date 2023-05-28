@@ -6,7 +6,7 @@ export const Body = () => {
 	const { body } = useArticleContext();
 	return (
 		<div className="article__body">
-			<ReactMarkdown children={body} className="article__markdown" />
+			<ReactMarkdown className="article__markdown">{body}</ReactMarkdown>
 		</div>
 	);
 };
