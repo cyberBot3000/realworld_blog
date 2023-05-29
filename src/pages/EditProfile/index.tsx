@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useFetchCurrentUserQuery, useSendUpdateUserMutation } from 'service';
-import { UpdateUserArgs } from 'service/types';
+import { UpdateUserArgs, UserArgsWithPassword } from 'service/types';
 import { PageError } from './components/PageError';
 import { PageLoader } from './components/PageLoader';
 import './style.scss';
@@ -34,10 +34,12 @@ const EditProfilePage = () => {
 		formMethods.setValue('email', currentUserData.user.email);
 		formMethods.setValue('username', currentUserData.user.username);
 		formMethods.setValue('image', currentUserData.user.image);
-		console.log(currentUserData);
 	}, [currentUserIsLoading, currentUserData]);
-	const submitHandler: SubmitHandler<FormValues> = formData => {
-		sendUpdateUser({ ...(formData as UpdateUserArgs), password: formData.newPassword });
+	const submitHandler: SubmitHandler<FormValues> = rawFormData => {
+		if (rawFormData.newPassword !== '') {
+			sendUpdateUser({ ...(rawFormData as UpdateUserArgs), password: rawFormData.newPassword });
+		} else sendUpdateUser({ ...(rawFormData as UpdateUserArgs) });
+
 		formMethods.setValue('newPassword', '');
 	};
 
