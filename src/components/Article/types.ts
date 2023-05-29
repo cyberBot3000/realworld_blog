@@ -8,3 +8,8 @@ export interface ArticleProps {
 	body?: ReactNode;
 	footer?: ReactNode;
 }
+
+export interface PropsWithWordCut {
+	maxViewLength?: number;
+	breakElement?: ReactNode;
+}

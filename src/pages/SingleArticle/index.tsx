@@ -12,7 +12,6 @@ export const SingleArticle = () => {
 		throw new Error('ошибка при попытке перехода на страницу статьи');
 	}
 	const { data: fetchedArticle, isLoading, isError } = useFetchArticleByIdQuery({ slug });
-	console.log(fetchedArticle?.article);
 
 	return (
 		<div className="single-article-page">
@@ -25,10 +24,10 @@ export const SingleArticle = () => {
 					<Article
 						article={fetchedArticle.article}
 						header={
-							<Flex alignItems="c" justifyContent="sb">
+							<Flex alignItems="fs" justifyContent="sb">
 								<Article.Info
 									header={
-										<Flex alignItems="c">
+										<Flex alignItems="fs">
 											<Article.Title />
 											<Article.Favorites />
 										</Flex>

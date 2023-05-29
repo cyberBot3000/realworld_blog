@@ -19,7 +19,6 @@ export const Title = () => {
 				placeholder="Title"
 				{...register('title', {
 					validate: {
-						maxTitleLength,
 						notOnlySpaces,
 					},
 					required: requiredMessage,

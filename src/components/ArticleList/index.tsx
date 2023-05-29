@@ -19,22 +19,22 @@ export const ArticlesList = () => {
 							key={article.slug}
 							article={article}
 							header={
-								<Flex alignItems="c" justifyContent="sb">
+								<Flex alignItems="fs" justifyContent="sb">
 									<Article.Info
 										header={
-											<Flex alignItems="c">
+											<Flex alignItems="fs">
 												<Link to={`/articles/${article.slug}`}>
-													<Article.Title />
+													<Article.Title maxViewLength={150} />
 												</Link>
 												<Article.Favorites />
 											</Flex>
 										}
-										footer={<Article.TagList />}
+										footer={<Article.TagList maxViewLength={50} />}
 									/>
 									<Article.Author />
 								</Flex>
 							}
-							afterHeader={<Article.Description />}
+							afterHeader={<Article.Description maxViewLength={340} />}
 						/>
 					))}
 					<Pagination

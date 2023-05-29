@@ -18,6 +18,9 @@
 
 	&__title {
 		color: $color-accent;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
 	}
 
 	&__likes {
@@ -77,10 +80,17 @@
 		color: $color-text-light;
 		border: 1px solid $color-text-light;
 		border-radius: 3px;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
+		hyphens: auto;
+		max-width: 30em;
 	}
 
 	&__author {
 		gap: 15px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		margin-left: 1.5em;
 	}
 
 	&__author-info {
