@@ -9,6 +9,8 @@
 	border-radius: 6px;
 	position: relative;
 	overflow: hidden;
+	margin: 2em 0em;
+
 
 	&::after {
 		content: '';
@@ -163,6 +165,7 @@
 		padding: .5em 1em;
 		border-radius: 4px;
 		font-size: 1.1em;
+		margin: 1em 0em;
 
 		&_error {
 			border: 1px solid $color-error;
