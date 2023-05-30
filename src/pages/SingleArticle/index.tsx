@@ -3,7 +3,7 @@ import { Container } from 'components/ui/Container';
 import { Flex } from 'components/ui/Flex';
 import { Loader } from 'components/ui/Loader';
 import { useParams } from 'react-router-dom';
-import { useFetchArticleByIdQuery } from 'service';
+import { useFetchArticleByIdQuery, useFetchCurrentUserQuery } from 'service';
 import './style.scss';
 
 export const SingleArticle = () => {
@@ -12,15 +12,14 @@ export const SingleArticle = () => {
 		throw new Error('ошибка при попытке перехода на страницу статьи');
 	}
 	const { data: fetchedArticle, isLoading, isError } = useFetchArticleByIdQuery({ slug });
+	const { data: currUserData, isLoading: currUserIsLoading } = useFetchCurrentUserQuery(undefined);
 
 	return (
 		<div className="single-article-page">
 			<Container className="single-article-page__container">
 				{isLoading && <Loader />}
-				{!isLoading && isError && (
-					<div className="single-article-page__error">произошла ошибка при загрузке статьи</div>
-				)}
-				{!isLoading && !isError && fetchedArticle && (
+				{isError && <div className="single-article-page__error">произошла ошибка при загрузке статьи</div>}
+				{fetchedArticle && (
 					<Article
 						article={fetchedArticle.article}
 						header={
@@ -34,7 +33,21 @@ export const SingleArticle = () => {
 									}
 									footer={<Article.TagList />}
 								/>
-								<Article.Author />
+								<div className="single-article-page__article-header-right">
+									<Article.Author />
+									{!currUserIsLoading &&
+										currUserData &&
+										currUserData.user.username === fetchedArticle.article.author.username && (
+											<Flex
+												alignItems="c"
+												justifyContent="fe"
+												className="single-article-page__article-actions"
+											>
+												<Article.DeleteBtn />
+												<Article.UpdateBtn />
+											</Flex>
+										)}
+								</div>
 							</Flex>
 						}
 						afterHeader={<Article.Description />}

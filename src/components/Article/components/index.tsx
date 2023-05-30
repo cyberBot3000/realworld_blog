@@ -5,3 +5,5 @@ export * from './Info';
 export * from './TagList';
 export * from './Title';
 export * from './Body';
+export * from './DeleteBtn';
+export * from './UpdateBtn';

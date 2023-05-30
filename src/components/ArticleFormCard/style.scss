@@ -159,4 +159,17 @@
 		}
 	}
 
+	&__message-field {
+		padding: .5em 1em;
+		border-radius: 4px;
+		font-size: 1.1em;
+
+		&_error {
+			border: 1px solid $color-error;
+		}
+
+		&_success {
+			border: 1px solid $color-success;
+		}
+	}
 }

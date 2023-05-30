@@ -66,5 +66,6 @@ export type NewArticleArgs = {
 	article: ArticleWithTitle & ArticleWithDescription & ArticleWithBody & ArticleWithTagList;
 };
 export type UpdateArticleArgs = {
-	article: ArticleWithTitle | ArticleWithDescription | ArticleWithBody;
+	article: ArticleWithTitle | ArticleWithDescription | ArticleWithBody | ArticleWithTagList;
+	slug: string;
 };

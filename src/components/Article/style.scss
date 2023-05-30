@@ -18,9 +18,7 @@
 
 	&__title {
 		color: $color-accent;
-		word-wrap: break-word;
-		overflow-wrap: break-word;
-		hyphens: auto;
+		word-break: break-all;
 	}
 
 	&__likes {
@@ -125,11 +123,13 @@
 	&__description {
 		color: $color-text-light;
 		line-height: 183%;
+		word-break: break-all;
+		overflow-wrap: break-word;
 	}
 
 	&__markdown {
 		width: 100%;
-		overflow-x: hidden;
+		word-break: break-all;
 		overflow-y: auto;
 
 		* {
@@ -137,5 +137,43 @@
 		}
 	}
 
+	&__action-btn {
+		border-radius: 6px;
+		padding: .5em 1.5em;
+		outline: none;
+		background-color: $color-bg-element;
+		transition: color $base-animation, background-color $base-animation;
+		cursor: pointer;
 
+		&_warning {
+			color: $color-error;
+			border: 1px solid $color-error;
+
+			&:hover {
+				background-color: $color-error;
+				color: $color-bg-element;
+			}
+		}
+
+		&_success {
+			color: $color-success;
+			border: 1px solid $color-success;
+
+			&:hover {
+				background-color: $color-success;
+				color: $color-bg-element;
+			}
+		}
+	}
+
+	&__tag-change-view-length-btn {
+		background-color: $color-bg-element;
+		outline: none;
+		border: none;
+		font-size: 1em;
+		color: $color-accent;
+		font-weight: 600;
+		cursor: pointer;
+		align-self: flex-end;
+	}
 }

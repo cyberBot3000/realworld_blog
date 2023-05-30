@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArticleProps } from './types';
 import { articleContext } from './hooks';
-import { Author, Body, Description, Favorites, Info, TagList, Title } from './components';
+import { Author, Body, DeleteBtn, Description, Favorites, Info, TagList, Title, UpdateBtn } from './components';
 import './style.scss';
 
 const Article = ({ article, header, afterHeader, body, footer }: ArticleProps) => {
@@ -24,5 +24,7 @@ Article.Favorites = Favorites;
 Article.TagList = TagList;
 Article.Title = Title;
 Article.Body = Body;
+Article.DeleteBtn = DeleteBtn;
+Article.UpdateBtn = UpdateBtn;
 
 export default Article;

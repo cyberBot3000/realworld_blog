@@ -9,6 +9,7 @@ import {
 	UpdateUserArgs,
 	UserResponse,
 	NewArticleArgs,
+	UpdateArticleArgs,
 } from './types';
 import { getCookie, setCookie } from 'utils/helpers';
 import { AUTHORIZATION } from 'utils/const';
@@ -43,6 +44,23 @@ export const realWorldApi = createApi({
 				url: '/articles',
 				method: 'POST',
 				body: args,
+			}),
+			invalidatesTags: ['Article'],
+		}),
+		sendUpdateArticle: build.mutation<ArticleResponseType, UpdateArticleArgs>({
+			query: args => ({
+				url: `/articles/${args.slug}`,
+				method: 'PUT',
+				body: {
+					article: args.article,
+				},
+			}),
+			invalidatesTags: ['Article'],
+		}),
+		sendDeleteArticle: build.mutation<null, { slug: string }>({
+			query: args => ({
+				url: `/articles/${args.slug}`,
+				method: 'DELETE',
 			}),
 			invalidatesTags: ['Article'],
 		}),
@@ -111,5 +129,7 @@ export const {
 	useSendFavoriteArticleMutation,
 	useSendUnfavoriteArticleMutation,
 	useSendNewArticleMutation,
+	useSendUpdateArticleMutation,
+	useSendDeleteArticleMutation,
 } = realWorldApi;
 export const realWorldApiReducer = realWorldApi.reducer;

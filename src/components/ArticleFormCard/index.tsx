@@ -2,6 +2,7 @@ import './style.scss';
 import { ArticleFormCardProps } from './types';
 import { FormTitle, ShortDescription, Text, Title, Taglist, SubmitBtn, ErrorField } from './components';
 import { FormProvider } from 'react-hook-form';
+import SuccessField from './components/SuccessField';
 
 const ArticleFormCard = ({
 	header,
@@ -33,4 +34,5 @@ ArticleFormCard.Title = Title;
 ArticleFormCard.Taglist = Taglist;
 ArticleFormCard.SubmitBtn = SubmitBtn;
 ArticleFormCard.ErrorField = ErrorField;
+ArticleFormCard.SuccessField = SuccessField;
 export default ArticleFormCard;

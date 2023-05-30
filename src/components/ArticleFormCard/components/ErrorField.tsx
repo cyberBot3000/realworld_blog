@@ -20,8 +20,8 @@ export const ErrorField = ({ error }: ErrorFieldProps) => {
 		errMessage.current = error.message;
 	}
 	return (
-		<div className="article-form-card__form-error-field">
-			<div className="article-form-card__form-error-message">{errMessage.current}</div>
+		<div className="article-form-card__message-field article-form-card__message-field_error">
+			<div className="article-form-card__text">{errMessage.current}</div>
 		</div>
 	);
 };
